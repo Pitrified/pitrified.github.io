@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pitrified · libraries</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫧</text></svg>">
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow"><a href="/">← pitrified</a></p>
+      <h1>the<span>.</span>libraries</h1>
+      <p class="subtitle">Reusable packages the apps are built on.</p>
+    </header>
+
+    <section class="graph-wrap">
+      <h2>dependency graph</h2>
+      <p class="graph-note">
+        repo → repo git dependencies, derived from each
+        <code>pyproject.toml</code> by repomgr. Drag the nodes around.
+      </p>
+      <div id="dep-graph"></div>
+    </section>
+
+    <div class="bubble-stage" data-category="libraries"></div>
+
+    <footer>
+      <span class="status"><span class="status-dot"></span> pietro nobili</span>
+      <a href="/all/">all projects →</a>
+      <a href="https://github.com/Pitrified">github</a>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"
+      integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/assets/projects.js"></script>
+    <script src="/assets/bubbles.js"></script>
+    <script src="/assets/graph.js"></script>
+  </body>
+</html>

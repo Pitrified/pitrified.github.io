@@ -1,0 +1,70 @@
+{
+  "nodes": [
+    {
+      "id": "fastapi-tools"
+    },
+    {
+      "id": "kit-hub"
+    },
+    {
+      "id": "laife"
+    },
+    {
+      "id": "lang-tools"
+    },
+    {
+      "id": "llm-core"
+    },
+    {
+      "id": "media-downloader"
+    },
+    {
+      "id": "places-tools"
+    },
+    {
+      "id": "python-project-template"
+    }
+  ],
+  "links": [
+    {
+      "source": "kit-hub",
+      "target": "fastapi-tools"
+    },
+    {
+      "source": "kit-hub",
+      "target": "llm-core"
+    },
+    {
+      "source": "kit-hub",
+      "target": "media-downloader"
+    },
+    {
+      "source": "laife",
+      "target": "llm-core"
+    },
+    {
+      "source": "lang-tools",
+      "target": "fastapi-tools"
+    },
+    {
+      "source": "lang-tools",
+      "target": "llm-core"
+    },
+    {
+      "source": "media-downloader",
+      "target": "fastapi-tools"
+    },
+    {
+      "source": "media-downloader",
+      "target": "llm-core"
+    },
+    {
+      "source": "places-tools",
+      "target": "fastapi-tools"
+    },
+    {
+      "source": "python-project-template",
+      "target": "fastapi-tools"
+    }
+  ]
+}
