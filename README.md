@@ -44,6 +44,11 @@ to, so cross-listing (e.g. `lang-tools` in both `language-learning` and
 `libraries`) is just a second tag. A project's colour comes from its first
 category. Page shells render themselves from this data via `bubbles.js`.
 
+Bubbles expand on hover (pointer devices). On touch / no-hover devices
+(`@media (hover: none)`), the first tap expands a bubble and the second tap
+follows its link - handled in `bubbles.js` via a `.tapped` state mirroring the
+`:hover` styles.
+
 ### Regenerating the dependency graph
 
 `tools/gen_graph.py` reuses [repomgr](https://github.com/Pitrified/repomgr)'s
@@ -58,7 +63,7 @@ cd ~/repos/repomgr && uv run python \
 
 It rewrites `assets/graph.json` (d3 `{nodes, links}`, keyed by repo name). The
 `/libraries` page renders it client-side with `assets/graph.js` (d3 v7, force-
-directed) — labels and colours are resolved there from `projects.js`, so the
+directed) - labels and colours are resolved there from `projects.js`, so the
 JSON stays minimal and identity lives in one place. d3 loads from a pinned CDN
 (SRI-checked) in `libraries/index.html`.
 
