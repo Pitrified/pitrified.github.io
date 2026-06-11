@@ -7,6 +7,22 @@
  *   <div class="bubble-stage" data-category="all">       every project, dense map
  * ────────────────────────────────────────────────────────────────────────── */
 
+// Touch / no-hover devices: a bubble can't be "hovered", so the first tap
+// would both expand (sticky :hover) and navigate. Instead, the first tap only
+// expands; a second tap on the same bubble follows the link.
+const NO_HOVER = window.matchMedia("(hover: none)");
+
+function onBubbleTap(event) {
+  if (!NO_HOVER.matches) return; // pointer devices: hover handles it, navigate normally
+  const bubble = event.currentTarget;
+  if (bubble.classList.contains("tapped")) return; // already open -> let the click navigate
+  event.preventDefault();
+  document
+    .querySelectorAll(".bubble.tapped")
+    .forEach((b) => b.classList.remove("tapped"));
+  bubble.classList.add("tapped");
+}
+
 function makeBubble({ href, label, name, desc, tag, color, x, y }) {
   const a = document.createElement("a");
   a.className = "bubble";
@@ -27,6 +43,7 @@ function makeBubble({ href, label, name, desc, tag, color, x, y }) {
   if (tag) content.querySelector(".btag").textContent = tag;
 
   a.appendChild(content);
+  a.addEventListener("click", onBubbleTap);
   return a;
 }
 
@@ -90,5 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
       renderProjects(stage, category);
     }
     staggerFloat(stage);
+  });
+
+  // Touch: tapping outside any bubble collapses the open one.
+  document.addEventListener("click", (event) => {
+    if (!NO_HOVER.matches || event.target.closest(".bubble")) return;
+    document
+      .querySelectorAll(".bubble.tapped")
+      .forEach((b) => b.classList.remove("tapped"));
   });
 });

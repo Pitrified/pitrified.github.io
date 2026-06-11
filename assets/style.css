@@ -155,7 +155,8 @@ h1 span { color: var(--accent); }
   top:  var(--y);
   transform: translate(-50%, -50%) scale(1);
 }
-.bubble-stage--map .bubble:hover {
+.bubble-stage--map .bubble:hover,
+.bubble-stage--map .bubble.tapped {
   transform: translate(-50%, -50%) scale(2.4);
 }
 
@@ -164,7 +165,8 @@ h1 span { color: var(--accent); }
   position: relative;
   transform: scale(1);
 }
-.bubble-stage--flow .bubble:hover {
+.bubble-stage--flow .bubble:hover,
+.bubble-stage--flow .bubble.tapped {
   transform: scale(1.85);
 }
 
@@ -206,15 +208,17 @@ h1 span { color: var(--accent); }
   color: var(--muted);
 }
 
-/* ── Hover: expand + reveal ── */
-.bubble:hover {
+/* ── Hover (or tap, on touch): expand + reveal ── */
+.bubble:hover,
+.bubble.tapped {
   box-shadow:
     0 0 0 1px var(--accent-c, var(--accent)),
     0 8px 30px rgba(0,0,0,0.5);
   z-index: 10;
 }
 
-.bubble:hover .bubble-content {
+.bubble:hover .bubble-content,
+.bubble.tapped .bubble-content {
   opacity: 1;
   transform: scale(0.65);
 }
@@ -231,7 +235,8 @@ h1 span { color: var(--accent); }
   transition: opacity 0.2s ease;
 }
 
-.bubble:hover::after {
+.bubble:hover::after,
+.bubble.tapped::after {
   opacity: 0;
 }
 
@@ -392,7 +397,7 @@ footer a:hover { color: var(--text); border-color: var(--dim); }
   50%       { margin-top: -7px; }
 }
 
-.bubble.floating:not(:hover) {
+.bubble.floating:not(:hover):not(.tapped) {
   animation: float 5s ease-in-out infinite;
 }
 
